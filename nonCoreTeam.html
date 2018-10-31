@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<script src="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/date.js"></script>
+
+<script src="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" href="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/jquery-ui.new.css">
+<script src="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/jquery-ui.min.js"></script>
+<script src="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/jquery.mtz.monthpicker.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/daterangepicker.min.css" />
+<script type="text/javascript" src="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/moment.js"></script>
+<script type="text/javascript" src="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/jquery.daterangepicker.js"></script> 
+<script type="text/javascript" src="/sites/WSS_Agency_Project/Style%20Library/NonCoreTeam/nonCoreTeam.js"></script> 
+<link rel="stylesheet" type="text/css" media="all" href="/sites/WSS_Agency_Project/Style%20Library/NonCoreTeam/nonCoreTeam.css" />
+
+</head>
+
+<body>
+<div id="descriptionHoliday" class="Descriptionmodal">
+<div class="modal-content">
+<p style="font-weight:600;font-size:17px;">Please Add Description</p></br>
+<input class="descriptionData"type="text" name="AddDescription" >
+<div class="AddDescription"><p class="Add"  style="font-weight:600;margin-top:-2px;">Add</p></div>
+ <div class="alertDescription"><p class="cancelDescription" style=" margin-top: -2px;margin-left: -7px;" >Cancel</p></div>   
+</div>
+</div>
+<div id="myModalHoliday" class="modalHoliday">
+<div class="modal-content">
+<p style="font-weight:600;font-size:17px;">Selected Period is already planned,Do you want to overwrite/replan existing period?</p></br>
+<p>Yes :Overwrite selected period</p></br>
+<p>No :Updates only not planned period</p></br>
+<p>Cancel :Do nothing</p>
+<p></p>
+</br>
+    <table>
+    <tr>
+    <td><div class="alertYesHoliday"><p class="yesP"  style="font-weight:600;">Yes</p></div></td>
+    <td><div class="alertNoHoliday"><p class="noP"  style="font-weight:600;" >No</p></div></td>
+    <td><div class="alertCancelHoliday"><p class="cancelP"  style="font-weight:600;">Cancel</p></div></td>
+    </tr>
+    </table>
+</div>
+
+</div>
+
+<div id="milestoneModal" class="modalmilestone">
+<div class="modal-content">
+<div class="milestoneClass" >
+<div style="float:right;color:red;padding: 4px;">Please fill (*)mandatory fields</div>
+<table>
+<tr>
+<td> <div class="nameMile cssClass">Name:</div></td>
+<td><p style="margin-left: -104px;color: red;">*</p></td>
+<td><div><select id="nameInputMile" class="dropDown" style="margin-left: -151px;" ></select></div> </td>
+
+</tr>
+<tr>
+<td> <div class="roleMile cssClass">Role:</div>
+<td><p style="margin-left: -113px;color: red;">*</p></td>
+<td><div><select id="roleInputMile" class="dropDown" style="margin-left: -151px;" ></select></div> </td>
+</td>
+</tr>
+<tr>
+<td> <div class="projectMile cssClass">Project Name:</div>
+<td><p style="margin-left: -67px;color: red;">*</p></td>
+<td><div><select id="projectInputMile" class="dropDown" style="margin-left: -151px;" ></select></div> </td>
+</td>
+</tr>
+<tr>
+<td> <div class="descriptionMile cssClass">Description: </div> </td>
+<td><p style="margin-left: -77px;color: red;">*</p></td>
+<td> <textarea  id="descText" rows="2" cols="50" style="margin-left: -151px;"></textarea> </td>
+</tr>
+<tr>
+
+<td> <div class="startDateMile cssClass">Start date: </div>  </td>
+<td><p style="margin-left: -83px;color: red;">*</p></td>
+<td><input type="text" id="startpicker" style="margin-left: -151px;"> </td>
+</tr>
+<tr>
+<td> <div class="endDateMile cssClass">End date: </div> </td>
+<td><p style="margin-left: -89px;color: red;">*</p></td>
+<td> <input type="text" id="endpicker" style="margin-left: -151px;"> </td>
+</tr>
+<tr>
+<td><div class="statusLabel cssClass">Status:</div></td>
+<td><p style="margin-left: -102px;color: red;">*</p></td>
+<td><div><select id="status" class="dropDownStatus"style="margin-left: -151px;"></select></div></td>
+</tr>
+<tr>
+<td> <div class="CommentsMile cssClass">Comments: </div> </td>
+<td></td>
+<td> <textarea id="commentText" rows="2" cols="50" style="margin-left: -151px;"></textarea> </td>
+</tr>
+<tr>
+<td><div class="mileSubmit "><p class="submitmileP"  style="font-weight:600;margin-top: 3px;">Submit</p></div></td>
+ <td><div class="mileCancel"><p class="cancelmileP"  style="font-weight:600;margin-top: 3px;">Cancel</p></div></td>
+</tr>
+</table>
+</div>
+
+</div>
+</div>
+
+<div id="milestoneEditModal" class="modalEditmilestone">
+<div class="modal-content">
+<div class="milestoneEditClass" >
+<div style="float:right;color:red;padding: 4px;">Please fill (*)mandatory fields</div>
+<table>
+<tr>
+<td> <div class="IdEdit cssClass" style="display:none;">Id: </div> </td>
+<td> <input class="editItemId" disabled style="display:none;"></input> </td>
+</tr>
+<tr>
+<td> <div class="nameEditMile cssClass">Name:</div></td>
+<td><p style="margin-left: -104px;color: red;"></p></td>
+<td><div><input id="nameEditInputMile" class="dropDown" style="margin-left: -151px;" disabled ></input></div> </td>
+
+</tr>
+<tr>
+<td> <div class="roleEditMile cssClass">Role:</div>
+<td><p style="margin-left: -113px;color: red;"></p></td>
+<td><div><input id="roleEditInputMile" class="dropDown" style="margin-left: -151px;" disabled ></input></div> </td>
+</td>
+</tr>
+<tr>
+<td> <div class="projectEditMile cssClass">Project Name:</div>
+<td><p style="margin-left: -67px;color: red;"></p></td>
+<td><div><input id="projectEditInputMile" class="dropDown" style="margin-left: -151px;" disabled></input></div> </td>
+</td>
+</tr>
+<tr>
+<td> <div class="descriptionMile cssClass">Description: </div> </td>
+<td><p style="margin-left: -77px;color: red;">*</p></td>
+<td> <textarea  id="descEditText" rows="2" cols="50" style="margin-left: -151px;"></textarea> </td>
+</tr>
+<tr>
+
+<td> <div class="startDateMile cssClass">Start date: </div>  </td>
+<td><p style="margin-left: -77px;color: red;">*</p></td>
+<td><input type="text" id="startEditpicker" style="margin-left: -151px;"> </td>
+</tr>
+<tr>
+<td> <div class="endDateMile cssClass">End date: </div> </td>
+<td><p style="margin-left: -77px;color: red;">*</p></td>
+<td> <input type="text" id="endEditpicker" style="margin-left: -151px;"> </td>
+</tr>
+<tr>
+<td><div class="statusLabel cssClass">Status:</div></td>
+<td><p style="margin-left: -77px;color: red;">*</p></td>
+<td><div><select id="statusEdit" class="dropDownStatus" style="margin-left: -151px;"></select></div></td>
+</tr>
+<tr>
+<td> <div class="CommentsMile cssClass">Comments: </div> </td>
+<td></td>
+<td> <textarea id="commentEditText" rows="2" cols="50" style="margin-left: -151px;"></textarea> </td>
+</tr>
+<tr>
+<td><div class="mileSave cssClass"><p class="savemileP"  style="font-weight:600;">Save</p></div></td>
+ <td><div class="mileEditCancel"><p class="canceleditmileP"  style="font-weight:600;">Cancel</p></div></td>
+</tr>
+</table>
+</div>
+
+</div>
+</div>
+<div id="myModal" class="modal">
+<div class="modal-content">
+<p style="font-weight:600;font-size:17px;">Selected Period is already planned,Do you want to overwrite/replan existing period?</p></br>
+<p>Yes :Overwrite selected period</p></br>
+<p>No :Updates only not planned period</p></br>
+<p>Cancel :Do nothing</p>
+<p></p>
+</br>
+    <table>
+    <tr>
+    <td><div class="alertYes"><p class="yesP"  style="font-weight:600;">Yes</p></div></td>
+    <td><div class="alertNo"><p class="noP"  style="font-weight:600;" >No</p></div></td>
+    <td><div class="alertCancel"><p class="cancelP"  style="font-weight:600;">Cancel</p></div></td>
+    </tr>
+    </table>
+</div>
+
+</div>
+<div id="bg_blocking_layer" >
+    <div id="layout_container">
+      
+	  Loading.....
+	 
+    </div>
+</div>
+<div class="headingTag">
+
+	<div class="logo" style="background-color: #eadf67;">
+            <img class="logoImage" src="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/bannerlogo.png" alt="Paris">
+			
+	</div>
+	<div class="userManualDiv"><img class="imageUserClass" src="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/unnamed%20(8).png" alt="Smiley face" width="42" height="42" >
+		<a href="/sites/ProjectWSSSA/Execution/SiteAssets/AvailabilitySheet/AvailabilitySheet(UserManual).docx?d=w4ee89ecb93f04924b36680c2c8a87067" style="color: black; font-size: 18px; font-weight: 600; "  download="">
+                            User Manual
+        </a>
+	</div>
+    <h2 class="Heading" style="border-bottom:1px solid gray; padding-bottom:10px;padding: 5px 5px 10px; text-align: center;">SA Project Resource Planning(NonCore Team)</h2>
+	
+<table>
+	<tr>
+		<td>
+			<img class="imageClass"src="/sites/WSS_Agency_Project/Style%20Library/ResourcePlanning/menu-alt-512.png" alt="Menu" >
+		</td>
+		<td>
+		<div class="dataClass" >
+			<table>
+				<tr>
+					<td><div class="nameLabel" style="font-size: 18px; float: left;">Name:</div></td>
+					<td><div><select id="names" class="dropDownClass" ></select></div></td>
+				</tr>
+				<tr>
+					<td><div class="nameLabel" style="font-size: 18px; float: left;">Role:</div></td>
+					<td><div><select id="roles" class="dropDownClass" ></select></div></td>
+				</tr>
+				<tr>
+					<td><div class="dateLabel">Date: </div></td>
+					<td><div > <input type="text" class="dateClass" name="datefilter" value="" /></div></td>
+				</tr>
+				
+				<table><tr>
+					<td><div class="colorDiv" >Select Project</div></td>
+				</tr>
+				<tr>
+				
+					<td>
+						<div class="codeDiv" >    		
+							<table class="renderColorTable">
+								<tr class="renderColorHeader">
+								</tr>
+							</table>
+						</div>
+					</td>
+					
+				</tr>
+			</table>
+		
+			<div class="divHoliday">
+				<h2 class="Heading" style="padding: 7px;border-bottom:2px solid black;"></h2>
+				<div class="applyDiv" ><p class="holidayP">Public Holiday</p></div>
+				<div class="holidayClass" style="display:none;">
+					<div class="holidayDiv">    
+						<table class="renderHolidayTable">
+							<tr class="renderHolidayHeader"></tr>
+						</table>
+					</div>
+				</div>
+			</div> 
+		</div>
+	</td>
+	<td>
+		<table style="position: absolute;margin-top: -126px;">
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td><div class="dateLabelNew" ><div for="startDate" class="dateDiv">Date :</div></div></td>
+							<td><div class="datepickerClass"><input id="startDate" class="datepickerInput" /></div></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="renderPlaceHolder" >    
+					<div class="renderData">
+					<table class="renderTable">
+						<tr class="renderHeader">
+      
+						</tr>
+					</table>
+					</div>
+					</div>
+				<div class="divMilestone">
+				
+				<table>
+					<tr>
+						<td><div class="milestoneTitleDiv" ><p class="milestoneTileP">Milestones</p></div></td>
+						<td><div class="milestoneDiv" ><p class="milestoneP">+Add</p></div></td>
+					</tr>
+				</table>
+			</div>
+			<div class="milestoneToggle">
+			<div>
+			<table>
+					<tr>
+						<td><div class="milestoneSearchDiv" ><p class="milestoneTileP">Search Milestones By </p></div></td>
+						<td><div class="milestoneName cssMile">Name :</div></td>
+						<td><div><select id="namesSearchMile" class="dropDownMilestone" ></select></div></td>
+						<td><div class="milestoneName cssMile">Role :</div></td>
+						<td><div><select id="rolesSearchMile" class="dropDownMilestone" ></select></div></td>
+						<td><div class="milestoneName cssMile">Status :</div></td>
+						<td><div><select id="statusSearchMile" class="dropDownMilestone" ></select></div></td>
+						<td><div class="milestoneName cssMile">Month :</div></td>
+						<td><div class="datepickerMilestone dropDownMilestone"><input id="startDateMile" class="datepickerMileInput" style="width:140px;" /></div></td>
+					</tr>
+				</table>
+			</div>
+					<div class="milestoneSection"></div>
+			</div>
+				</td>		
+			</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</div>
+</body>
+</html>
